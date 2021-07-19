@@ -308,7 +308,7 @@ namespace ams::mitm::fs {
                 out.SetValue(MakeSharedStorage(new RemoteStorage(bis_storage)), target_object_id);
             } else {
                 /* We can only read, so create a readable storage. */
-                out.SetValue(MakeSharedStorage(new ReadOnlyStorageAdapter(new RemoteStorage(bis_storage))), target_object_id);
+                out.SetValue(MakeSharedStorage(new RemoteStorage(bis_storage)), target_object_id);
             }
         }
 

@@ -80,15 +80,15 @@ include $(ATMOSPHERE_CPU_MAKE_DIR)/cpu.mk
 #---------------------------------------------------------------------------------
 # get atmosphere git revision information
 #---------------------------------------------------------------------------------
-export ATMOSPHERE_GIT_BRANCH   := $(shell git symbolic-ref --short HEAD)
+export ATMOSPHERE_GIT_BRANCH   := master
 
 ifeq ($(strip $(shell git status --porcelain 2>/dev/null)),)
-export ATMOSPHERE_GIT_REVISION := $(ATMOSPHERE_GIT_BRANCH)-$(shell git rev-parse --short HEAD)
+export ATMOSPHERE_GIT_REVISION := $(ATMOSPHERE_GIT_BRANCH)-$(AMS_SHORT_HASH)
 else
-export ATMOSPHERE_GIT_REVISION := $(ATMOSPHERE_GIT_BRANCH)-$(shell git rev-parse --short HEAD)-dirty
+export ATMOSPHERE_GIT_REVISION := $(ATMOSPHERE_GIT_BRANCH)-$(AMS_SHORT_HASH)-dirty
 endif
 
-export ATMOSPHERE_GIT_HASH := $(shell git rev-parse --short=16 HEAD)
+export ATMOSPHERE_GIT_HASH := $(AMS_LONG_HASH)
 
 ATMOSPHERE_DEFINES += -DATMOSPHERE_GIT_BRANCH=\"$(ATMOSPHERE_GIT_BRANCH)\" -DATMOSPHERE_GIT_REVISION=\"$(ATMOSPHERE_GIT_REVISION)\" -DATMOSPHERE_GIT_HASH="0x$(ATMOSPHERE_GIT_HASH)"
 

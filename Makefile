@@ -5,8 +5,8 @@ endif
 include $(DEVKITPRO)/devkitA64/base_tools
 
 TOPTARGETS := all clean dist-no-debug dist
-AMSBRANCH := $(shell git symbolic-ref --short HEAD)
-AMSHASH := $(shell git rev-parse --short HEAD)
+AMSBRANCH := master
+AMSHASH := $(AMS_SHORT_HASH)
 AMSREV := $(AMSBRANCH)-$(AMSHASH)
 
 ifneq (, $(strip $(shell git status --porcelain 2>/dev/null)))
